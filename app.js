@@ -34,16 +34,20 @@ const ItemCtrl = (function () {
 const UICtrl = (function () {
   // Public methods
   return {
-    populateItemList: function () {
+    populateItemList: function (items) {
       let html = "";
-      items.forEach(function () {
-        html += ` <li class="collection-item" id="item-${item.id}">
-        <strong>${item.name}</strong> </strong> <em>${item.calories} Calories</em>
+      items.forEach(function (item) {
+        html += `<li class="collection-item" id="item-${item.id}">
+        <strong>${item.name}:</strong><em>${item.calories} 
+        Calories</em>
         <a href="#" class="secondary-content">
             <i class="edit-item fa fa-pencil"></i>
         </a>
     </li>`;
       });
+
+      // Insert list items
+      document.querySelector("#item-list").innerHTML = html;
     },
   };
 })();
