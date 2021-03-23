@@ -33,7 +33,8 @@ const ItemCtrl = (function () {
 /** UI Controller */
 const UICtrl = (function () {
   const UISelectors = {
-    itemList: '#item-list'
+    itemList: '#item-list',
+    addBtn: '.add-btn'
   }
   // Public methods
   return {
@@ -41,7 +42,7 @@ const UICtrl = (function () {
       let html = "";
       items.forEach(function (item) {
         html += `<li class="collection-item" id="item-${item.id}">
-        <strong>${item.name}:</strong><em>${item.calories} 
+        <strong>${item.name}:</strong> <em>${item.calories} 
         Calories</em>
         <a href="#" class="secondary-content">
             <i class="edit-item fa fa-pencil"></i>
@@ -52,11 +53,30 @@ const UICtrl = (function () {
       // Insert list items
       document.querySelector(UISelectors.itemList).innerHTML = html;
     },
+    getSelectors: function() {
+      return UISelectors;
+    }
   };
 })();
 
 /** App Controller */
 const App = (function (ItemCtrl, UICtrl) {
+  // Load event listeners
+  const loadEventListeners = function (){
+    // Get UI selectors
+    const UISelectors = UICtrl.getSelectors();
+
+    // Add item event
+    document.querySelector(UISelectors.addBtn).addEventListener("click",itemAddSubmit);
+  }
+
+  // Add item sumbit
+  const itemAddSubmit = function (e){
+    console.log('Add');
+    e.preventDefault();
+  }
+
+
   // Public methods
   return {
     init: function () {
@@ -65,6 +85,9 @@ const App = (function (ItemCtrl, UICtrl) {
 
       // Populate list with items.
       UICtrl.populateItemList(items);
+
+      // Load event listeners
+      loadEventListeners();
     },
   };
 })(ItemCtrl, UICtrl);
