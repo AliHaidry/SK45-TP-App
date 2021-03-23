@@ -83,7 +83,12 @@ const App = (function (ItemCtrl, UICtrl) {
     // Get form input from UI Controller
     const input = UICtrl.getItemInput();
 
-    console.log(input);
+    // Check for name and calorie input
+    if(input.name !== '' && input.calories !== '')
+    {
+      console.log('12345');
+    }
+    
     e.preventDefault();
   }
 
