@@ -38,7 +38,7 @@ const ItemCtrl = (function () {
       calories = parseInt(calories);
 
       // Create new item
-      newItem = new Item(ID, calories);
+      newItem = new Item(ID,name, calories);
 
       // Add to items array
       data.items.push(newItem); 
