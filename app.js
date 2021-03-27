@@ -55,6 +55,9 @@ const ItemCtrl = (function () {
       });
       return found;
     },
+    setCurrentItem: function (item){
+      data.currentItem = item;
+    },
     getTotalCalories: function (){
       let total = 0;
       // Loop through items and add calories
@@ -213,6 +216,8 @@ const App = (function (ItemCtrl, UICtrl) {
       // Get item
       const itemToEdit = ItemCtrl.getItemById(id);
 
+      // Set current item
+      ItemCtrl.setCurrentItem(itemToEdit);
       
     }
 
