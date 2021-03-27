@@ -159,6 +159,9 @@ const App = (function (ItemCtrl, UICtrl) {
 
     // Add item event
     document.querySelector(UISelectors.addBtn).addEventListener("click",itemAddSubmit);
+
+    // Edit icon click event
+    document.querySelector(UISelectors.itemList).addEventListener("click",itemUpdateSubmit);
   }
 
   // Add item submit
@@ -182,6 +185,13 @@ const App = (function (ItemCtrl, UICtrl) {
       UICtrl.clearInput();
     }
     
+    e.preventDefault();
+  }
+
+  // Update Item submit
+  const itemUpdateSubmit = function(e){
+    console.log('test');
+
     e.preventDefault();
   }
 
