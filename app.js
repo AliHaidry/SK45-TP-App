@@ -55,6 +55,21 @@ const ItemCtrl = (function () {
       });
       return found;
     },
+    updateItem: function(name, calories){
+      // Calories to number
+      calories = parseInt(calories);
+
+      let found = null;
+
+      data.items.forEach(function(item){
+        if(item.id === data.currentItem.id) {
+          item.name = name;
+          item.calories = calories;
+          found = item;
+        }
+      });
+      return found;
+    },
     setCurrentItem: function (item){
       data.currentItem = item;
     },
@@ -256,7 +271,12 @@ const App = (function (ItemCtrl, UICtrl) {
 
   // Update item submit
   const itemUpdateSubmit = function(e) {
-    console.log('update');
+  // Get item input
+  const input = UICtrl.getItemInput();
+  // Update item
+  const updateItem = ItemCtrl.updateItem(input.name, input.calories);
+
+
     e.preventDefault();
   }
 
